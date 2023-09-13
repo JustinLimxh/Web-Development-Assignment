@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+h1 {
+  background-color: white;
+  text-align: center;
+  padding: 20px;
+  font-family: Lucida handwriting, cursive;
+}
+
+body {margin:0;}
+
+.nav {
+  width: 100%;
+  background-color: #555;
+  overflow: auto;
+}
+
+.nav a {
+  float: left;
+  width: 20%;
+  text-align: center;
+  padding: 12px 0;
+  transition: all 0.3s ease;
+  color: white;
+  font-size: 36px;
+}
+
+.nav a:hover {
+  background-color: #000;
+}
+
+.active {
+  background-color: #04AA6D;
+}
+
+.container {
+    width: 50px;
+    height: 25px;
+}
+
+/* Resize images */
+.container img {
+    width: 100%;
+    height: auto;
+}
