@@ -1,4 +1,3 @@
-@charset "UTF-8";
 
 h1 {
   background-color: white;
@@ -9,37 +8,32 @@ h1 {
 
 body {margin:0;}
 
-.nav {
+.navigation{
   width: 100%;
-  background-color: #555;
-  overflow: auto;
-}
-
-.nav a {
-  float: left;
-  width: 20%;
   text-align: center;
-  padding: 12px 0;
-  transition: all 0.3s ease;
-  color: white;
-  font-size: 36px;
+  background-color: #CEE3F6; 
+  overflow: hidden /* This Allows for the Background to span the entire height */
 }
 
-.nav a:hover {
-  background-color: #000;
+#nav-list{
+  list-style-type: none;
+  float: left; /* Keeps the elements side by side*/
+  margin-bottom: 0 /* fix the spacing to allow the menu to be at the bottom */
 }
 
-.active {
-  background-color: #04AA6D;
+#nav-list li{
+  float: left; /* allows the li tags to be side by side. */
+  font-size: 18px;
+  margin: 20px 20px 0 0; /* Fixed a little of the spacing, etc. */
+  padding:69px 0 0 0 /* Moved the LI down to be at the bottom*/
 }
 
-.container {
-    width: 50px;
-    height: 25px;
+.logo-img{
+  float: left;  
+  margin: 0px 15px 0 0px; /* fixed the spacing. */
 }
 
-/* Resize images */
-.container img {
-    width: 100%;
-    height: auto;
+img {
+  width: 5%;
+  height: auto;
 }
