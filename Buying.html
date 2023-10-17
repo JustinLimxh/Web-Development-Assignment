@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Japanese E-Bookshop </title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">       
-        <link rel="stylesheet" href="/WebDevelopment/public_html/CSS/BorrowingCSS.css">  
-        
+        <link rel="stylesheet" href="/WebDevelopment/public_html/CSS/BuyingCSS.css">  
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
 </head>
 
 <body>
@@ -23,7 +23,121 @@
     </nav>
   </header>
   <main>
+      
+        <section class="product-page">
+            <div class="product-details">
+                
+                <div class="product-img">
+                    <div class="swiper mySwiper">
+                       <div class="swiper-wrapper">
+                           <div class="swiper-slide">
+                               <img src="/WebDevelopment/public_html/image/mushoku25.webp" alt="mushoku25"/>
+                           </div>
+                           <div class="swiper-slide">
+                               <img src="/WebDevelopment/public_html/image/mushoku24.webp" alt="mushoku24"/>
+                           </div>
+                           <div class="swiper-slide">
+                               <img src="/WebDevelopment/public_html/image/mushoku23.webp" alt="mushoku23"/>
+                           </div>
+                           <div class="swiper-slide">
+                               <img src="/WebDevelopment/public_html/image/mushoku22.webp" alt="mushoku22"/>
+                           </div>
+                       </div>
+                        <div class="slider-btns">
+                            <div class="swiper-button-prev"></div>
+                            <div class="swiper-button-next"></div>                       
+                        </div>
+                    </div>                 
+                </div>
+                
+                <div class="product-text">
+                    <span class="product-category">Light Novel</span>
+                    
+                    <h3>Mushoku Tensei: Jobless Reincarnation</h3>
+                    
+                    <span class="product-price">US $7.14</span>
+                    
+                    <p> Contact tablets and teleportation circles across the world have stopped functioning.
+                         Now, Rudeus and his allies gather at the Superd village, where a powerful subjugation patrol aims to take them out.
+                         The third North God Kalman, the former Sword God Gal Farion, and the Ogre God Marta march among their ranks. 
+                        </br> </br>
+                         Rudeus's team puts their lives on the line in this ultimate clash of the world's most mighty warriors!
+                    </p>
+                                                        
+                    <div class="product-size-container">
+                        <strong>Genre</strong>
+                        <div class="product-genre">
+                            <a>Light Novels ,</a>
+                            <a>Action ,</a>
+                            <a>Adventure ,</a>
+                            <a>Drama ,</a>
+                            <a>Fantasy ,</a>
+                            <a>Harem ,</a>
+                            <a>Isekai</a>
+                        </div>         
+                        </br>
+                        <strong>Select Volume:-</strong>
+                        
+                        <div class="product-size">
+                            
+                            <input type="checkbox" class="s-checkbox" id="s-xl">
+                            <label for="s-xl" class="s-label">25</label>
+                            
+                            <input type="checkbox" class="s-checkbox" id="s-l">
+                            <label for="s-l" class="s-label">24</label>
+                            
+                            <input type="checkbox" class="s-checkbox" id="s-m">
+                            <label for="s-m" class="s-label">23</label>
+                            
+                            <input type="checkbox" class="s-checkbox" id="s-s">
+                            <label for="s-s" class="s-label">22</label>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="product-buttons">
+                        <a href="#" class="add-bag-btn">Add to Cart</a>
+                        <a href="#" class="add-wishlist-btn">Add to Wishlist</a>
+                    </div>
+                    
+                    <a href="#" class="help-btn">Need Any Help?</a>
+                </div>
+               
+            </div>
+        </section>       
+        
+        <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     
+        <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+        
+        <script type="text/javascript">
+            $('.s-checkbox').on('change', function(){
+                $('.s-checkbox').not(this).prop('checked', false);
+            });
+             var swiper = new Swiper(".mySwiper", {
+                 slidesPerView: 1,
+                 spaceBetween: 10,
+                navigation: {
+                 nextEl: ".swiper-button-next",
+                 prevEl: ".swiper-button-prev",
+                 },
+                breakpoints: {
+                450: {
+                 slidesPerView: 1,
+                 spaceBetween: 0,
+                 },
+                820: {
+                 slidesPerView: 1,
+                 spaceBetween: 0,
+                 },
+                1024: {
+                 slidesPerView: 1,
+                 spaceBetween: 0,
+                 },
+               },
+            });
+            
+        </script>          
   </main>
   <footer class="footer">
     <div class="copy">&copy; KADOKAWA CORPORATION 2023</div>
