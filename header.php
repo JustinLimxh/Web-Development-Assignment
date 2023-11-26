@@ -17,12 +17,12 @@ if(isset($message)){
 
    <div class="header-2">
       <div class="flex">
-         <a href="index.php" class="logo">Japanese E-Bookshop.</a>
+         <a href="index.php" class="logo">Japanese E-Bookshop</a>
 
          <nav class="navbar">
             <a href="buy.php">Buy</a>
             <a href="borrow.php">Borrow</a>
-            <a href="wishlist.php">Wishlist</a>
+            <a href="order.php">Orders</a>
             <a href="myBook.php">My Books</a>
             <a href="membership.php">Membership</a>
          </nav>
