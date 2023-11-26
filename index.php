@@ -1,77 +1,62 @@
 <?php
 
 include 'config.php';
+
 session_start();
+
 $user_id = $_SESSION['user_id'];
 
 if(!isset($user_id)){
    header('location:login.php');
-};
+}
 
-if(isset($_GET['logout'])){
-   unset($user_id);
-   session_destroy();
-   header('location:login.php');
-};
+if(isset($_POST['add_to_cart'])){
+
+   $product_name = $_POST['product_name'];
+   $product_price = $_POST['product_price'];
+   $product_image = $_POST['product_image'];
+   $product_quantity = $_POST['product_quantity'];
+
+   $check_cart_numbers = mysqli_query($conn, "SELECT * FROM `cart` WHERE name = '$product_name' AND user_id = '$user_id'") or die('query failed');
+
+   if(mysqli_num_rows($check_cart_numbers) > 0){
+      $message[] = 'already added to cart!';
+   }else{
+      mysqli_query($conn, "INSERT INTO `cart`(user_id, name, price, quantity, image) VALUES('$user_id', '$product_name', '$product_price', '$product_quantity', '$product_image')") or die('query failed');
+      $message[] = 'product added to cart!';
+   }
+
+}
 
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Japanese E-Bookshop </title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">       
-        <link rel="stylesheet" href="/WebDevelopment/public_html/CSS/MainCSS.css">  
-        <link rel="stylesheet" href="/WebDevelopment/public_html/CSS/style.css">
-        
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>shop</title>
+
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="css/style.css">
+
 </head>
-
 <body>
-  <header class="header">
-    <a href="/WebDevelopment/public_html/HTML/index.html" class="logo">Japanese E-Bookshop</a>
-    
-    <nav class="nav-items">
-         <?php
-if(isset($message)){
-   foreach($message as $message){
-      echo '<div class="message" onclick="this.remove();">'.$message.'</div>';
-   }
-}
-?>
+   
+<?php include 'header.php'; ?>
 
 
 
-   <?php
-      $select_user = mysqli_query($conn, "SELECT * FROM `user_info` WHERE id = '$user_id'") or die('query failed');
-      if(mysqli_num_rows($select_user) > 0){
-         $fetch_user = mysqli_fetch_assoc($select_user);
-      };
-   ?>
-
-   <a><span><?php echo $fetch_user['name']; ?></span> </a>
-
-      <a href="index.php?logout=<?php echo $user_id; ?>" onclick="return confirm('are your sure you want to logout?');" class="delete-btn">logout</a>
- 
-      <a href="/WebDevelopment/public_html/HTML/Buying.html">Buy</a>
-      <a href="/WebDevelopment/public_html/HTML/Borrowing.html">Borrow</a>
-      <a href="/WebDevelopment/public_html/HTML/PreOrder.html">Preorder</a>
-      <a href="/WebDevelopment/public_html/HTML/WishList.html">Wishlist</a>
-      <a href="/WebDevelopment/public_html/HTML/MyBook.html">My Book</a>
-      <a href="/WebDevelopment/public_html/HTML/Membership.html">Membership</a>
-    </nav>
-  </header>
-  
-
-
-  <main>
+<main>
     <div class="intro">
       <h1>World of light novels</h1>
       <p>buy or preorder books that u like!</p>
-      <a href="/WebDevelopment/public_html/HTML/Login.html" target="_blank">
-      <button>Learn More!</button>
+      <a href="buy.php" target="_blank">
+      <button>Buy Now!</button>
       </a>
     </div>
     <div class="rankings">
@@ -102,23 +87,13 @@ if(isset($message)){
       <img src="/WebDevelopment/public_html/image/about_us.webp" alt="me">
     </div>
   </main>
-  <footer class="footer">
-    <div class="copy">&copy; KADOKAWA CORPORATION 2023</div>
-    <div class="bottom-links">
-      <div class="links">
-        <span>More Info</span>
-        <a href="#">Home</a>
-        <a href="#">About</a>
-        <a href="#">Contact</a>
-      </div>
-      <div class="links">
-        <span>Social Links</span>
-        <a href="#"><i class="fab fa-facebook"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-      </div>
-    </div>
-  </footer>
-</body>
 
+
+
+<?php include 'footer.php'; ?>
+
+<!-- custom js file link  -->
+<script src="js/script.js"></script>
+
+</body>
 </html>
