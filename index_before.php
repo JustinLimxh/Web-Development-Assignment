@@ -6,23 +6,6 @@ session_start();
 
 
 
-if(isset($_POST['add_to_cart'])){
-
-   $product_name = $_POST['product_name'];
-   $product_price = $_POST['product_price'];
-   $product_image = $_POST['product_image'];
-   $product_quantity = $_POST['product_quantity'];
-
-   $check_cart_numbers = mysqli_query($conn, "SELECT * FROM `cart` WHERE name = '$product_name' AND user_id = '$user_id'") or die('query failed');
-
-   if(mysqli_num_rows($check_cart_numbers) > 0){
-      $message[] = 'already added to cart!';
-   }else{
-      mysqli_query($conn, "INSERT INTO `cart`(user_id, name, price, quantity, image) VALUES('$user_id', '$product_name', '$product_price', '$product_quantity', '$product_image')") or die('query failed');
-      $message[] = 'product added to cart!';
-   }
-
-}
 
 ?>
 
@@ -50,7 +33,7 @@ if(isset($_POST['add_to_cart'])){
 <main>
     <div class="intro">
       <h1>World of light novels</h1>
-      <p>buy or preorder books that u like!</p>
+      <p>buy or borrow books that u like!</p>
       <a href="login.php">
       <button>Learn More!</button>
       </a>
@@ -70,7 +53,7 @@ if(isset($_POST['add_to_cart'])){
       </div>
       <div class="rank">
         <img src="/WebDevelopment/public_html/image/preorder.svg" class="img_icon" alt="Preorder">
-        <p class="rank-heading">Preorder</p>
+        <p class="rank-heading">Buy Now</p>
         <p class="rank-text">Upcoming Big Hits.</p>
         <img src="/WebDevelopment/public_html/image/preorder1.jpg"  alt="leaderboard">
       </div>
